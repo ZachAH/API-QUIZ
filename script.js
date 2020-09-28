@@ -1,37 +1,37 @@
-var questions = [
+var questions1 = [
     {
         question:"What does parseInt argument do?",
         choices:["closes function", "Gives a Random Number", "Turns a string argument into an integer"],
-        answer:"Turns a string argument into an interger"
+        answer: "Turns a string argument into an interger"
 
     },
 
     {
         question: "What does DOM stand for?",
         choices:["Document Object Model", "Display or Move", "Document of Media"],
-        answer:"Document Object Model"
+        answer: "Document Object Model"
     },
 
     {
         question: "Packers, Saints, Chiefs This is an example of What?" ,
         choices:["Array", "Function", "DOM"],
-        answer:"Array"
+        answer: "Array"
     },
 
     {
         question: "<div> is an example of what type of element?",
         choices:["block level element", "inline element", "selector element"],
-        answer:"block level element"
+        answer: "block level element"
     }
 ];
 
-//varibles to keep track of time and questions
+
 var currentQuestionIndex = 0;
-var time = questions.length * 20;
+var time = questions1.length * 20;
 var timerId;
 
 
-//Varibles to set up DOM manipulation
+
 var button = document.getElementById("BTN");
 var firstQuestionsEl = document.getElementById("start");
 var QuestionEl = document.getElementById("question");
@@ -45,6 +45,7 @@ var choicesEl = document.getElementById("new1");
 
 function quizTime () {
     var startQuizEl =  document.getElementById("home-screen").style.display = "none";
+    var startQuiz1El = document.getElementById("end").style.display = "none";
     
     timerId = setInterval(timeStart, 1000);
 
@@ -58,7 +59,7 @@ function quizTime () {
 
 
 function quizQuestions () {
-    var currentQuestion = questions[currentQuestionIndex];
+    var currentQuestion = questions1[currentQuestionIndex];
     var titleEl = document.getElementById("question");
     titleEl.textContent = currentQuestion.question;
     choicesEl.innerHTML = "";
@@ -82,7 +83,7 @@ function quizQuestions () {
 
 function question1() {
     // check if user guessed wrong
-    if (this.value !== questions[currentQuestionIndex].answer) {
+    if (this.value !== questions1[currentQuestionIndex].answer) {
       // penalize time
       time -= 25;
   
@@ -111,7 +112,7 @@ function question1() {
     currentQuestionIndex++;
   
     // check if we've run out of questions
-    if (currentQuestionIndex === questions.length) {
+    if (currentQuestionIndex === questions1.length) {
       quizEnd();
     } else {
       quizQuestions();
@@ -129,6 +130,12 @@ function timeStart() {
 function quizEnd() {
     // stop timer
     clearInterval(timerId);
+    var startQuizEl = document.getElementById("question").style.display = "none";
+    var startQuizEl = document.getElementById("new1").style.display = "none";
+    var startQuiz1El = document.getElementById("end").style.display = "";  
+    var finalScoreEl = document.getElementById("final-score");
+    finalScoreEl.textContent = time;
+
 }   
 
 
